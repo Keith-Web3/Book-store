@@ -1,0 +1,20 @@
+@use '../variables' as *;
+
+.header {
+  display: flex;
+  padding: $spacer;
+  gap: $spacer;
+  grid-area: header;
+  box-shadow: 2px 0px 2px 2px #f4f6f6;
+  margin-bottom: $spacer;
+
+  &__search {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: $spacer;
+    color: $gray-100;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}

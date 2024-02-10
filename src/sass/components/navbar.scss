@@ -1,0 +1,57 @@
+@use '../variables' as *;
+
+.navbar {
+  display: flex;
+  grid-area: nav;
+
+  ul {
+    list-style-type: none;
+  }
+  &__icons {
+    padding: $spacer;
+
+    li {
+      padding: 0.25em;
+      width: 40px;
+      cursor: pointer;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-content: center;
+      border-radius: 50%;
+      margin-bottom: $spacer * 1.5;
+
+      &:hover {
+        background-color: $dark-300;
+
+        svg {
+          stroke: #d0d9df;
+        }
+      }
+    }
+  }
+  &__links {
+    padding: $spacer;
+    text-transform: capitalize;
+    color: $dark-100;
+    font-weight: 500;
+    box-shadow: 0px 2px 2px 2px #f4f6f6;
+
+    .nav-header {
+      color: $dark-200;
+      font-weight: 600;
+      margin-bottom: $spacer;
+      line-height: 2.9;
+      padding-left: $spacer;
+    }
+    .nav-item {
+      padding: $spacer * 0.7 $spacer * 3 $spacer * 0.7 $spacer;
+
+      &:hover {
+        background-color: $blue-50;
+        color: $blue-100;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+    }
+  }
+}
