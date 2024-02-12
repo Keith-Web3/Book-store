@@ -7,6 +7,8 @@ $dark-300: #2b3036;
 $blue-50: #e5eeff;
 $blue-100: #7289b3;
 $blue-200: #2a5ec5;
+$cyan: #c6f1dd;
+$green-200: #2d6a4b;
 
 @mixin screen($size) {
   @media (min-width: #{$size}px) {
