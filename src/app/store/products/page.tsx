@@ -1,4 +1,4 @@
-import '../sass/pages/homepage.scss'
+import '../../../sass/pages/homepage.scss'
 import BookCard from '@/components/Card'
 import PageLayout from './pagelayout'
 

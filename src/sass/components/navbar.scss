@@ -10,7 +10,7 @@
   &__icons {
     padding: $spacer;
 
-    li {
+    a {
       padding: 0.25em;
       width: 40px;
       cursor: pointer;
@@ -19,8 +19,9 @@
       place-content: center;
       border-radius: 50%;
       margin-bottom: $spacer * 1.5;
+      text-decoration: none;
 
-      &:hover {
+      &.active {
         background-color: $dark-300;
 
         svg {
@@ -45,6 +46,10 @@
     }
     .nav-item {
       padding: $spacer * 0.7 $spacer * 3 $spacer * 0.7 $spacer;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      // margin-bottom: $spacer;
 
       &:hover {
         background-color: $blue-50;

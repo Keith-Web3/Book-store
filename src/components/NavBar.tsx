@@ -1,3 +1,4 @@
+'use client'
 import {
   CloudLightningIcon,
   ComputerIcon,
@@ -7,39 +8,91 @@ import {
   StoreIcon,
 } from 'lucide-react'
 import '../sass/components/navbar.scss'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 interface NavBarProps {}
 
 const NavBar = function ({}: NavBarProps) {
+  const pathname = usePathname()
+  const paths = pathname.split('/').slice(1)
+  console.log(paths)
   return (
     <nav className="navbar">
       <ul className="navbar__icons">
         <li>
-          <HomeIcon color="#67686a" />
+          <Link href="/">
+            <HomeIcon color="#67686a" />
+          </Link>
         </li>
         <li>
-          <StoreIcon color="#67686a" />
+          <Link
+            className={paths[0] === 'store' ? 'active' : ''}
+            href="/store/products"
+          >
+            <StoreIcon color="#67686a" />
+          </Link>
         </li>
         <li>
-          <MailIcon color="#67686a" />
+          <Link
+            className={paths[0] === 'messages' ? 'active' : ''}
+            href="/messages/product"
+          >
+            <MailIcon color="#67686a" />
+          </Link>
         </li>
         <li>
-          <ComputerIcon color="#67686a" />
+          <Link
+            className={paths[0] === 'system' ? 'active' : ''}
+            href="/system/products"
+          >
+            <ComputerIcon color="#67686a" />
+          </Link>
         </li>
         <li>
-          <CloudLightningIcon color="#67686a" />
+          <Link
+            className={paths[0] === 'cloud' ? 'active' : ''}
+            href="/cloud/products"
+          >
+            <CloudLightningIcon color="#67686a" />
+          </Link>
         </li>
         <li>
-          <SettingsIcon color="#67686a" />
+          <Link
+            className={paths[0] === 'settings' ? 'active' : ''}
+            href="/settings/products"
+          >
+            <SettingsIcon color="#67686a" />
+          </Link>
         </li>
       </ul>
       <ul className="navbar__links">
         <li className="nav-header">store</li>
-        <li className="nav-item">products</li>
-        <li className="nav-item">orders</li>
-        <li className="nav-item">customers</li>
-        <li className="nav-item">discounts</li>
-        <li className="nav-item">bundles</li>
+        <li>
+          <Link className="nav-item" href="./products">
+            products
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-item" href="./orders">
+            orders
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-item" href="./customers">
+            customers
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-item" href="./discounts">
+            discounts
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-item" href="./bundles">
+            bundles
+          </Link>
+        </li>
       </ul>
     </nav>
   )
