@@ -1,5 +1,6 @@
 'use client'
 import { LayoutGrid, List, PlusIcon } from 'lucide-react'
+import Link from 'next/link'
 import { ReactNode, useState } from 'react'
 interface PageLayoutProps {
   children: ReactNode
@@ -12,10 +13,12 @@ const PageLayout = function ({ children }: PageLayoutProps) {
     <>
       <header className="homepage__header">
         <h1>products</h1>
-        <button>
-          <PlusIcon />
-          New eBook
-        </button>
+        <Link href="../new-book">
+          <button>
+            <PlusIcon />
+            New eBook
+          </button>
+        </Link>
       </header>
       <div className="homepage__nav">
         <ul className="homepage__tabs">

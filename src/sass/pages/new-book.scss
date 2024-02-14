@@ -1,0 +1,96 @@
+@use '../variables' as *;
+
+.new-book {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacer;
+    box-shadow: 0px 2px 2px rgba($dark-200, 0.15);
+    position: relative;
+    z-index: 1;
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: $spacer * 0.5;
+      padding: 0.75em 1em;
+      cursor: pointer;
+      color: $dark-200;
+      font-weight: 500;
+      border: none;
+      background-color: transparent;
+      text-transform: capitalize;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: $spacer;
+    }
+  }
+  &__view {
+    button {
+      gap: $spacer * 1.1;
+      border-radius: 8px;
+
+      svg {
+        width: 1.3rem;
+      }
+
+      &.active {
+        background-color: $blue-50;
+        color: $blue-100;
+
+        svg {
+          stroke: $blue-100;
+        }
+      }
+    }
+  }
+  &__save-options {
+    button:first-child {
+      box-shadow: 0px 0px 2px 1px rgba($dark-200, 0.175);
+      border-radius: 8px;
+    }
+    button:last-child {
+      background-color: $blue-200;
+      color: #ffffff;
+      border-radius: 8px;
+    }
+  }
+  &__main {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    background-color: #fbfcfe;
+    padding: $spacer * 2 $spacer $spacer * 2 0;
+
+    ul {
+      list-style-type: none;
+      padding: $spacer;
+      text-align: center;
+      color: $dark-100;
+      font-weight: 500;
+
+      li {
+        padding: 0.75em 1.3em;
+        border-radius: 5px;
+        &:hover {
+          background-color: $blue-50;
+          color: $blue-200;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

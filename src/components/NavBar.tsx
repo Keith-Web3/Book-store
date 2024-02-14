@@ -16,7 +16,7 @@ interface NavBarProps {}
 const NavBar = function ({}: NavBarProps) {
   const pathname = usePathname()
   const paths = pathname.split('/').slice(1)
-  console.log(paths)
+
   return (
     <nav className="navbar">
       <ul className="navbar__icons">
