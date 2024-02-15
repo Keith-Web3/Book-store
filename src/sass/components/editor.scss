@@ -14,6 +14,24 @@
     font-size: 1.5rem;
     margin-bottom: $spacer;
   }
+  &__price {
+    display: block;
+    margin-block: $spacer;
+    text-transform: capitalize;
+    font-weight: 500;
+
+    input {
+      display: block;
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 0.35em 0.6em;
+      box-shadow: 0px 0px 2px rgba($dark-200, 0.25);
+      border-radius: 5px;
+      margin-block: $spacer * 0.65 $spacer * 0.3;
+      padding-right: $spacer * 2;
+    }
+  }
   &__title {
     margin-bottom: $spacer;
     label {
