@@ -6,6 +6,7 @@ interface BookCardProps {
   title: string
   price: number
   sales: number
+  coverImg: string
 }
 
 const BookCard = async function ({
@@ -13,20 +14,16 @@ const BookCard = async function ({
   title,
   price,
   sales,
+  coverImg,
 }: BookCardProps) {
-  const res = await fetch(
-    `https://api.unsplash.com/photos/random?query=cover&orientation=portrait&client_id=${process.env.UNSPLASH_CLIENT_ID}`
-  )
-  const book = await res.json()
-
   return (
     <div className="book-card">
       <Image
         className="book-card__image"
-        src={book.urls.full}
+        src={coverImg}
         width={200}
         height={375}
-        alt={book.alt_description}
+        alt={title}
       />
       <p className={`book-card__status ${status}`}>{status}</p>
       <p className="book-card__title">{title}</p>
@@ -42,7 +39,7 @@ const BookCard = async function ({
         </div>
         <div>
           <p>revenue</p>
-          <p>{formatPrice(price * sales)}</p>
+          <p>{sales === 0 ? '-' : formatPrice(price * sales)}</p>
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ const PageLayout = function ({ children }: PageLayoutProps) {
           </li>
         </ul>
       </div>
-      <div className={layout}>{children}</div>
+      <div className={`cards ${layout}`}>{children}</div>
     </>
   )
 }

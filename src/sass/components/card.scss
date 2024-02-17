@@ -76,6 +76,7 @@
     grid-template: repeat(2, auto) max-content / max-content 1fr;
     grid-template-areas: 'status status' 'img title' 'img footer';
     gap: $spacer;
+    width: 100%;
 
     &__image {
       max-width: 100%;
@@ -104,9 +105,9 @@
     width: 320px;
 
     &__image {
-      width: min(50%, 150px);
+      width: 150px;
       max-width: 100%;
-      height: auto;
+      height: 225px;
       margin-inline: auto;
       object-position: center;
       margin-bottom: $spacer * 2.2;

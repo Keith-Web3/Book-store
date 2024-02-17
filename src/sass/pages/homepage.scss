@@ -1,6 +1,12 @@
 @use '../variables' as *;
 
 .homepage {
+  .cards {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacer;
+  }
   &__header {
     display: flex;
     align-items: center;
