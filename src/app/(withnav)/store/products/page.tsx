@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div className="homepage">
       <PageLayout>
-        {cards?.data.books.map((card: Card) => (
+        {cards?.data?.books.map((card: Card) => (
           <BookCard key={card._id} {...card} />
         ))}
       </PageLayout>
