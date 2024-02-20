@@ -1,6 +1,9 @@
 # Book-store
 
-Just a small project to practise express and mongoose
+Just a small project to practise express and mongoose.
+The only working page right now is 
+https://book-store-keith-web3.vercel.app/store/products
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
