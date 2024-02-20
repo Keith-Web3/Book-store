@@ -1,6 +1,5 @@
 export interface Card {
   title: string
-  _id: string
   price: number
   sales: number
   description: string
@@ -8,4 +7,6 @@ export interface Card {
   coverImg: string
   createdAt: Date
   updatedAt: Date
+  revenue: 0
+  id: string
 }

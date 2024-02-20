@@ -1,21 +1,25 @@
 import '@/sass/pages/homepage.scss'
-import BookCard from '@/components/Card'
 import PageLayout from './pagelayout'
-import { Card } from '@/app/types'
+import { getBooks } from '@/utils/server'
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from '@tanstack/react-query'
 
 export default async function Home() {
-  const cardsRes = await fetch(`${process.env.NEXT_PUBLIC_URL}/v1/books`, {
-    cache: 'no-store',
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery({
+    queryKey: ['books'],
+    queryFn: getBooks,
   })
-  const cards = await cardsRes.json()
 
   return (
     <div className="homepage">
-      <PageLayout>
-        {cards?.data?.books.map((card: Card) => (
-          <BookCard key={card._id} {...card} />
-        ))}
-      </PageLayout>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <PageLayout />
+      </HydrationBoundary>
     </div>
   )
 }

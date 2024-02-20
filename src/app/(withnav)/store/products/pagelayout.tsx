@@ -1,14 +1,21 @@
 'use client'
+import { Card } from '@/app/types'
+import BookCard from '@/components/Card'
+import { getBooks } from '@/utils/server'
+import { useQuery } from '@tanstack/react-query'
 import { LayoutGrid, List, PlusIcon } from 'lucide-react'
 import Link from 'next/link'
-import { ReactNode, useState } from 'react'
-interface PageLayoutProps {
-  children: ReactNode
-}
+import { useState } from 'react'
+interface PageLayoutProps {}
 
-const PageLayout = function ({ children }: PageLayoutProps) {
+const PageLayout = function ({}: PageLayoutProps) {
   const [layout, setLayout] = useState('grid')
+  const [page, setPage] = useState('1')
   const [filter, setFilter] = useState<'all' | 'published' | 'draft'>('all')
+
+  const { data: cards } = useQuery({ queryKey: ['books'], queryFn: getBooks })
+
+  console.log(cards)
   return (
     <>
       <header className="homepage__header">
@@ -56,7 +63,11 @@ const PageLayout = function ({ children }: PageLayoutProps) {
           </li>
         </ul>
       </div>
-      <div className={`cards ${layout}`}>{children}</div>
+      <div className={`cards ${layout}`}>
+        {cards?.map((card: Card) => (
+          <BookCard key={card.id} {...card} />
+        ))}
+      </div>
     </>
   )
 }
