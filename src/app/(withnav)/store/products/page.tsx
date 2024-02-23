@@ -1,25 +1,17 @@
 import '@/sass/pages/homepage.scss'
-import PageLayout from './pagelayout'
+import Books from './books'
 import { getBooks } from '@/utils/server'
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from '@tanstack/react-query'
 
-export default async function Home() {
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery({
-    queryKey: ['books'],
-    queryFn: getBooks,
-  })
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { page: string; filter: string }
+}) {
+  const books = await getBooks()
 
   return (
     <div className="homepage">
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageLayout />
-      </HydrationBoundary>
+      <Books books={books} />
     </div>
   )
 }

@@ -78,4 +78,14 @@
       }
     }
   }
+  &__pagination {
+    display: flex;
+    align-items: center;
+    gap: $spacer;
+    margin-top: $spacer * 2;
+
+    img {
+      cursor: pointer;
+    }
+  }
 }

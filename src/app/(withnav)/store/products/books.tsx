@@ -3,19 +3,30 @@ import { Card } from '@/app/types'
 import BookCard from '@/components/Card'
 import { getBooks } from '@/utils/server'
 import { useQuery } from '@tanstack/react-query'
-import { LayoutGrid, List, PlusIcon } from 'lucide-react'
+import {
+  ChevronLeft,
+  ChevronRight,
+  LayoutGrid,
+  List,
+  PlusIcon,
+} from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-interface PageLayoutProps {}
+interface BooksProps {
+  books: Card[]
+}
 
-const PageLayout = function ({}: PageLayoutProps) {
+const Books = function ({ books }: BooksProps) {
   const [layout, setLayout] = useState('grid')
   const [page, setPage] = useState('1')
   const [filter, setFilter] = useState<'all' | 'published' | 'draft'>('all')
 
-  const { data: cards } = useQuery({ queryKey: ['books'], queryFn: getBooks })
+  const { data: cards } = useQuery({
+    queryKey: ['books'],
+    queryFn: getBooks,
+    initialData: books,
+  })
 
-  console.log(cards)
   return (
     <>
       <header className="homepage__header">
@@ -68,8 +79,13 @@ const PageLayout = function ({}: PageLayoutProps) {
           <BookCard key={card.id} {...card} />
         ))}
       </div>
+      <div className="homepage__pagination">
+        <ChevronLeft />
+        <p>1 - {books.length}</p>
+        <ChevronRight />
+      </div>
     </>
   )
 }
 
-export default PageLayout
+export default Books
