@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import '../sass/components/card.scss'
 import { formatPrice } from '@/utils/format'

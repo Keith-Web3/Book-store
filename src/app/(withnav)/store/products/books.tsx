@@ -1,8 +1,4 @@
 'use client'
-import { Card } from '@/app/types'
-import BookCard from '@/components/Card'
-import { getBooks } from '@/utils/server'
-import { useQuery } from '@tanstack/react-query'
 import {
   ChevronLeft,
   ChevronRight,
@@ -11,21 +7,34 @@ import {
   PlusIcon,
 } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { ReactNode, useState } from 'react'
 interface BooksProps {
-  books: Card[]
+  limit: number
+  totalPages: number
+  totalBooks: number
+  children: ReactNode
 }
 
-const Books = function ({ books }: BooksProps) {
+const Books = function ({
+  limit,
+  totalPages,
+  totalBooks,
+  children,
+}: BooksProps) {
   const [layout, setLayout] = useState('grid')
-  const [page, setPage] = useState('1')
   const [filter, setFilter] = useState<'all' | 'published' | 'draft'>('all')
 
-  const { data: cards } = useQuery({
-    queryKey: ['books'],
-    queryFn: getBooks,
-    initialData: books,
-  })
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const { replace } = useRouter()
+  const currentPage = Number(searchParams.get('page')) || 1
+
+  const createPageURL = (pageNumber: number | string) => {
+    const params = new URLSearchParams(searchParams)
+    params.set('page', pageNumber.toString())
+    replace(`${pathname}?${params.toString()}`)
+  }
 
   return (
     <>
@@ -74,15 +83,24 @@ const Books = function ({ books }: BooksProps) {
           </li>
         </ul>
       </div>
-      <div className={`cards ${layout}`}>
-        {cards?.map((card: Card) => (
-          <BookCard key={card.id} {...card} />
-        ))}
-      </div>
+      <div className={`cards ${layout}`}>{children}</div>
       <div className="homepage__pagination">
-        <ChevronLeft />
-        <p>1 - {books.length}</p>
-        <ChevronRight />
+        <ChevronLeft
+          onClick={() => {
+            if (currentPage === 1) return
+            createPageURL(currentPage - 1)
+          }}
+        />
+        <p>
+          {limit * (currentPage - 1) + 1} -{' '}
+          {limit * currentPage > totalBooks ? totalBooks : limit * currentPage}
+        </p>
+        <ChevronRight
+          onClick={() => {
+            if (currentPage === totalPages) return
+            createPageURL(currentPage + 1)
+          }}
+        />
       </div>
     </>
   )
