@@ -81,7 +81,7 @@ const BookLayout = function ({}: BookLayoutProps) {
               const card = { ...state, status: 'draft' }
               const toastId = toast.loading('Saving book to drafts')
               try {
-                await fetch(`${process.env.NEXT_PUBLIC_URL}/v1/books`, {
+                await fetch(`${process.env.SERVER_URL}/v1/books`, {
                   method: 'POST',
                   body: JSON.stringify(card),
                   headers: {
@@ -105,7 +105,7 @@ const BookLayout = function ({}: BookLayoutProps) {
               const card = { ...state, status: 'published' }
               const toastId = toast.loading('Publishing...')
               try {
-                await fetch(`${process.env.NEXT_PUBLIC_URL}/v1/books`, {
+                await fetch(`${process.env.SERVER_URL}/v1/books`, {
                   method: 'POST',
                   body: JSON.stringify(card),
                   headers: {
