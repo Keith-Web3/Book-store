@@ -81,7 +81,7 @@ const BookLayout = function ({}: BookLayoutProps) {
               const card = { ...state, status: 'draft' }
               const toastId = toast.loading('Saving book to drafts')
               try {
-                await fetch(`${process.env.SERVER_URL}/v1/books`, {
+                await fetch(`/new-book/api`, {
                   method: 'POST',
                   body: JSON.stringify(card),
                   headers: {
@@ -90,7 +90,7 @@ const BookLayout = function ({}: BookLayoutProps) {
                 })
                 toast.dismiss(toastId)
                 toast.success('Saved book to drafts')
-                router.push('/store/products')
+                // router.push('/store/products')
               } catch (err: any) {
                 toast.dismiss(toastId)
                 toast.error(err.message)
@@ -105,7 +105,7 @@ const BookLayout = function ({}: BookLayoutProps) {
               const card = { ...state, status: 'published' }
               const toastId = toast.loading('Publishing...')
               try {
-                await fetch(`${process.env.SERVER_URL}/v1/books`, {
+                await fetch(`/new-book/api`, {
                   method: 'POST',
                   body: JSON.stringify(card),
                   headers: {
@@ -114,7 +114,7 @@ const BookLayout = function ({}: BookLayoutProps) {
                 })
                 toast.dismiss(toastId)
                 toast.success('Published book successfully')
-                router.push('/store/products')
+                // router.push('/store/products')
               } catch (err: any) {
                 toast.dismiss(toastId)
                 toast.error(err.message)
