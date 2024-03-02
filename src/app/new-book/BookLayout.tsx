@@ -90,7 +90,7 @@ const BookLayout = function ({}: BookLayoutProps) {
                 })
                 toast.dismiss(toastId)
                 toast.success('Saved book to drafts')
-                // router.push('/store/products')
+                router.push('/store/products')
               } catch (err: any) {
                 toast.dismiss(toastId)
                 toast.error(err.message)
