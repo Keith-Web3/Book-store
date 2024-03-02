@@ -114,7 +114,7 @@ const BookLayout = function ({}: BookLayoutProps) {
                 })
                 toast.dismiss(toastId)
                 toast.success('Published book successfully')
-                // router.push('/store/products')
+                router.push('/store/products')
               } catch (err: any) {
                 toast.dismiss(toastId)
                 toast.error(err.message)

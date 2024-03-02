@@ -86,6 +86,9 @@
 
     svg {
       cursor: pointer;
+      &[aria-disabled='true'] {
+        cursor: not-allowed;
+      }
     }
   }
 }

@@ -86,6 +86,7 @@ const Books = function ({
       <div className={`cards ${layout}`}>{children}</div>
       <div className="homepage__pagination">
         <ChevronLeft
+          aria-disabled={currentPage === 1}
           onClick={() => {
             if (currentPage === 1) return
             createPageURL(currentPage - 1)
@@ -96,6 +97,7 @@ const Books = function ({
           {limit * currentPage > totalBooks ? totalBooks : limit * currentPage}
         </p>
         <ChevronRight
+          aria-disabled={currentPage === totalPages}
           onClick={() => {
             if (currentPage === totalPages) return
             createPageURL(currentPage + 1)
