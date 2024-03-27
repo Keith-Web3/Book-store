@@ -21,5 +21,8 @@
       color: $dark-200;
       text-transform: capitalize;
     }
+    &:focus {
+      border-color: mix($gray-100, black, 60%);
+    }
   }
 }
