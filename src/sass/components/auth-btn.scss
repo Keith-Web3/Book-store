@@ -10,4 +10,9 @@
   text-transform: capitalize;
   color: white;
   cursor: pointer;
+  transition: 200ms linear background-color;
+
+  &:hover {
+    background-color: mix($purple-100, black, 85%);
+  }
 }
