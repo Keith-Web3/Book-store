@@ -36,6 +36,9 @@ const Login = function ({}: LoginProps) {
         </div>
         <Button>sign in</Button>
       </form>
+      <p className="login__signup">
+        Don&apos;t have an account? <Link href="/signup">Sign up</Link>{' '}
+      </p>
     </div>
   )
 }

@@ -32,4 +32,12 @@
       }
     }
   }
+  &__signup {
+    margin-top: $spacer * 1.5;
+    color: $dark-200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacer * 0.5;
+  }
 }
