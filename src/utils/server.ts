@@ -9,5 +9,7 @@ export async function getBooks(page?: number, limit?: number) {
   )
   const cards = await cardsRes.json()
 
+  console.log(cards)
+
   return cards.data
 }

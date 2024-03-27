@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+.input {
+  display: block;
+  color: $dark-200;
+  text-transform: capitalize;
+  margin-top: $spacer;
+  width: 100%;
+
+  input {
+    border: 2px solid $gray-100;
+    outline: none;
+    color: $gray-200;
+    display: block;
+    margin-top: $spacer * 0.5;
+    border-radius: 5px;
+    padding: 0.5em 0.75em;
+    width: 100%;
+
+    &::placeholder {
+      color: $dark-200;
+      text-transform: capitalize;
+    }
+  }
+}

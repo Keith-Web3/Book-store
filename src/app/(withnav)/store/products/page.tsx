@@ -10,7 +10,7 @@ export default async function Home({
   searchParams: { page: number }
 }) {
   const currentPage = Number(searchParams?.page) || 1
-  const limit = 5
+  const limit = 10
   const data = await getBooks(currentPage, limit)
 
   return (
