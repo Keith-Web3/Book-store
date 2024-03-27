@@ -5,6 +5,10 @@
   display: grid;
   grid-template: 1fr / 1fr 1fr;
 
+  @media (max-width: 740px) {
+    grid-template: 1fr / 1fr;
+  }
+
   &__main {
     display: grid;
     place-items: center;
@@ -16,6 +20,9 @@
     display: grid;
     place-items: center;
     position: relative;
+    @media (max-width: 740px) {
+      display: none;
+    }
 
     .circle {
       width: min(40%, 220px);
