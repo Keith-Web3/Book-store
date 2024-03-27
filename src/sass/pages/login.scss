@@ -26,6 +26,10 @@
       align-items: center;
       gap: $spacer * 0.5;
       cursor: pointer;
+
+      input {
+        accent-color: $purple-100;
+      }
     }
   }
 }
