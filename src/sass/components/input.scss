@@ -6,6 +6,7 @@
   text-transform: capitalize;
   margin-top: $spacer;
   width: 100%;
+  position: relative;
 
   input {
     border: 2px solid $gray-100;
@@ -24,5 +25,10 @@
     &:focus {
       border-color: mix($gray-100, black, 60%);
     }
+  }
+  svg {
+    position: absolute;
+    inset: auto $spacer 10px auto;
+    cursor: pointer;
   }
 }

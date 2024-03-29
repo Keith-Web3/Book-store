@@ -6,7 +6,7 @@ import '@/sass/index.scss'
 
 const inter = Inter({
   subsets: ['latin'],
-  display: 'swap',
+  // display: 'swap',
   adjustFontFallback: false,
 })
 

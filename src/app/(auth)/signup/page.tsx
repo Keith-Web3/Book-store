@@ -9,9 +9,9 @@ interface SignupProps {}
 const Signup = function ({}: SignupProps) {
   return (
     <div className="signup">
-      <p className="signup__header">Hello bookworm</p>
+      <p className="signup__header">Hello bookworm 🪱</p>
       <p className="signup__subheader">
-        Sign up here to get wonderful deals on your book purchases
+        📚 Sign up to unlock a world of literary wonders! 🌟
       </p>
       <form action="">
         <Input
