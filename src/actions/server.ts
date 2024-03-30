@@ -9,6 +9,9 @@ export async function getBooks(page?: number, limit?: number) {
     `${process.env.SERVER_URL}/v1/books?page=${page}&limit=${limit}`,
     {
       cache: 'no-store',
+      headers: {
+        Authorization: `Bearer ${cookies().get(process.env.JWT_NAME!)?.value}`,
+      },
     }
   )
   const cards = await cardsRes.json()
@@ -79,3 +82,5 @@ export async function signup(_formStatus: any, formData: FormData) {
 
   redirect('/')
 }
+
+export async function getUser(userId: string) {}
