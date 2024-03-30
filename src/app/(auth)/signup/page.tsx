@@ -11,6 +11,7 @@ import '@/sass/pages/signup.scss'
 interface SignupProps {}
 
 const Signup = function ({}: SignupProps) {
+  //@ts-ignore
   const [formState, action] = useFormState<{ message: '' }>(signup, {
     message: '',
   })
