@@ -1,6 +1,6 @@
 import '@/sass/pages/homepage.scss'
 import Books from './books'
-import { getBooks } from '@/utils/server'
+import { getBooks } from '@/actions/server'
 import { Card } from '@/app/types'
 import BookCard from '@/components/Card'
 

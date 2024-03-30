@@ -1,19 +1,26 @@
-import Input from '@/components/Input'
+'use client'
 import Link from 'next/link'
+import { useFormState } from 'react-dom'
+
+import Input from '@/components/Input'
 import Button from '../Button'
+import { signup } from '@/actions/server'
 
 import '@/sass/pages/signup.scss'
 
 interface SignupProps {}
 
 const Signup = function ({}: SignupProps) {
+  const [formState, action] = useFormState<{ message: '' }>(signup, {
+    message: '',
+  })
   return (
     <div className="signup">
       <p className="signup__header">Hello bookworm 🪱</p>
       <p className="signup__subheader">
         📚 Sign up to unlock a world of literary wonders! 🌟
       </p>
-      <form action="">
+      <form action={action}>
         <Input
           htmlFor="name"
           label="name"
