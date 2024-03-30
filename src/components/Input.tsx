@@ -21,7 +21,7 @@ const Input = function ({
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   return (
     <label
-      className={`input ${formState.path[0] === htmlFor ? 'invalid' : ''}`}
+      className={`input ${formState?.path[0] === htmlFor ? 'invalid' : ''}`}
       htmlFor={htmlFor}
     >
       {label}
@@ -44,7 +44,7 @@ const Input = function ({
           />
         )
       ) : null}
-      <p className="input__error">{formState.message}</p>
+      <p className="input__error">{formState?.message}</p>
     </label>
   )
 }
