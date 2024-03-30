@@ -7,6 +7,7 @@ import Button from '../Button'
 import { signup } from '@/actions/server'
 
 import '@/sass/pages/signup.scss'
+import toast from 'react-hot-toast'
 
 interface SignupProps {}
 
@@ -19,6 +20,7 @@ const Signup = function ({}: SignupProps) {
       path: '',
     }
   )
+
   return (
     <div className="signup">
       <p className="signup__header">Hello bookworm 🪱</p>

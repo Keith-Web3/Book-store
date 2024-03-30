@@ -67,7 +67,7 @@ export async function signup(_formStatus: any, formData: FormData) {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
     })
   } catch (err) {
-    return { message: err }
+    return { message: err, path: null }
   }
 
   redirect('/login')

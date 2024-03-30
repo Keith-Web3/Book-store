@@ -15,4 +15,8 @@
   &:hover {
     background-color: mix($purple-100, black, 85%);
   }
+  &:disabled {
+    background-color: $gray-200;
+    cursor: not-allowed;
+  }
 }
