@@ -28,7 +28,19 @@
   }
   svg {
     position: absolute;
-    inset: auto $spacer 10px auto;
+    inset: 42px $spacer auto auto;
     cursor: pointer;
+  }
+  &__error {
+    display: none;
+  }
+
+  &.invalid {
+    .input__error {
+      text-transform: none;
+      display: block;
+      color: red;
+      font-size: 0.9rem;
+    }
   }
 }

@@ -11,10 +11,14 @@ import '@/sass/pages/signup.scss'
 interface SignupProps {}
 
 const Signup = function ({}: SignupProps) {
-  //@ts-ignore
-  const [formState, action] = useFormState<{ message: '' }>(signup, {
-    message: '',
-  })
+  const [formState, action] = useFormState<{ message: string; path: string }>(
+    //@ts-ignore
+    signup,
+    {
+      message: '',
+      path: '',
+    }
+  )
   return (
     <div className="signup">
       <p className="signup__header">Hello bookworm 🪱</p>
@@ -26,6 +30,7 @@ const Signup = function ({}: SignupProps) {
           htmlFor="name"
           label="name"
           type="text"
+          formState={formState}
           minLength={3}
           placeholder="enter your name"
         />
@@ -33,12 +38,14 @@ const Signup = function ({}: SignupProps) {
           htmlFor="email"
           label="email"
           type="email"
+          formState={formState}
           placeholder="enter your email"
         />
         <Input
           htmlFor="password"
           label="password"
           type="password"
+          formState={formState}
           minLength={8}
           placeholder="enter your password"
         />
@@ -46,6 +53,7 @@ const Signup = function ({}: SignupProps) {
           htmlFor="passwordConfirm"
           label="confirm password"
           type="password"
+          formState={formState}
           minLength={8}
           placeholder="confirm your password"
         />

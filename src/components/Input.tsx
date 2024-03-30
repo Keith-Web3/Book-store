@@ -6,16 +6,24 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react'
 interface InputProps {
   htmlFor: string
   label: string
+  formState: {
+    path: string
+    message: string
+  }
 }
 
 const Input = function ({
   htmlFor,
   label,
+  formState,
   ...inputProps
 }: InputProps & ComponentPropsWithoutRef<'input'>) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   return (
-    <label className="input" htmlFor={htmlFor}>
+    <label
+      className={`input ${formState.path[0] === htmlFor ? 'invalid' : ''}`}
+      htmlFor={htmlFor}
+    >
       {label}
       <input
         {...inputProps}
@@ -36,6 +44,7 @@ const Input = function ({
           />
         )
       ) : null}
+      <p className="input__error">{formState.message}</p>
     </label>
   )
 }
