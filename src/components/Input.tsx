@@ -19,6 +19,8 @@ const Input = function ({
       {label}
       <input
         {...inputProps}
+        name={htmlFor}
+        required
         type={isPasswordVisible ? 'text' : inputProps.type}
       />
       {inputProps.type === 'password' ? (

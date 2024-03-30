@@ -18,6 +18,7 @@ const Signup = function ({}: SignupProps) {
           htmlFor="name"
           label="name"
           type="text"
+          minLength={3}
           placeholder="enter your name"
         />
         <Input
@@ -30,12 +31,14 @@ const Signup = function ({}: SignupProps) {
           htmlFor="password"
           label="password"
           type="password"
+          minLength={8}
           placeholder="enter your password"
         />
         <Input
           htmlFor="passwordConfirm"
           label="confirm password"
           type="password"
+          minLength={8}
           placeholder="confirm your password"
         />
         <Button>sign up</Button>

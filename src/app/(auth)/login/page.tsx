@@ -25,6 +25,7 @@ const Login = function ({}: LoginProps) {
           htmlFor="password"
           label="password"
           type="password"
+          minLength={8}
           placeholder="enter your password"
         />
         <div className="login__options">
