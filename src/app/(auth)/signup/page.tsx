@@ -1,13 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { useFormState } from 'react-dom'
+import toast from 'react-hot-toast'
 
 import Input from '@/components/Input'
 import Button from '../Button'
 import { signup } from '@/actions/server'
 
 import '@/sass/pages/signup.scss'
-import toast from 'react-hot-toast'
 
 interface SignupProps {}
 

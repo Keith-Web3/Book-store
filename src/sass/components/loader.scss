@@ -1,0 +1,13 @@
+@use '../variables' as *;
+
+.loader {
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  animation: rotate 200ms linear infinite;
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
