@@ -49,7 +49,10 @@ export async function signup(_formStatus: any, formData: FormData) {
   })
 
   if (!validatedFields.success) {
-    const { message, path } = JSON.parse(validatedFields.error.message)[0]
+    const { message, path } = JSON.parse(validatedFields.error.message)[0] as {
+      message: string
+      path: string
+    }
     return { message, path }
   }
 
@@ -61,14 +64,18 @@ export async function signup(_formStatus: any, formData: FormData) {
         'Content-Type': 'application/json',
       },
     })
+    if (!response.ok) {
+      const data = await response.json()
+      return { message: data.message, path: null }
+    }
     const data = await response.json()
 
-    cookies().set('jwt', data.token, {
+    cookies().set(process.env.JWT_NAME!, data.token, {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
     })
   } catch (err) {
     return { message: err, path: null }
   }
 
-  redirect('/login')
+  redirect('/')
 }

@@ -20,6 +20,9 @@ const Signup = function ({}: SignupProps) {
       path: '',
     }
   )
+  if (formState.message && !formState.path) {
+    toast.error(formState.message)
+  }
 
   return (
     <div className="signup">
