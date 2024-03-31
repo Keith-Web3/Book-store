@@ -1,15 +1,19 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  if (
-    request.nextUrl.pathname.startsWith('/signup') ||
-    request.nextUrl.pathname.startsWith('/login')
-  )
-    return
+  const token = request.cookies.get(process.env.JWT_NAME!)?.value
 
-  const token = request.cookies.get(process.env.JWT_NAME!)
+  const allowLoggedOut =
+    request.nextUrl.pathname.startsWith('/login') ||
+    request.nextUrl.pathname.startsWith('/signup')
 
-  if (!token?.value?.length) {
+  if (allowLoggedOut && token?.length) {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
+
+  if (allowLoggedOut) return
+
+  if (!token?.length) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 }
