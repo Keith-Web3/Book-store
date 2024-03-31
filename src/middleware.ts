@@ -12,8 +12,6 @@ export async function middleware(request: NextRequest) {
   if (!token?.value?.length) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
-
-  return NextResponse.redirect(new URL('/signup', request.url))
 }
 
 export const config = {
