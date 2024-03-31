@@ -2,26 +2,31 @@ import Link from 'next/link'
 
 import Input from '@/components/Input'
 import Button from '../Button'
+import { login, signup } from '@/actions/server'
 
 import '@/sass/pages/login.scss'
+import { useFormState } from 'react-dom'
 
 interface LoginProps {}
 
 const Login = function ({}: LoginProps) {
+  const [formState, action] = useFormState(login, { message: '', path: '' })
   return (
     <div className="login">
       <p className="login__header">Welcome back</p>
       <p className="login__subheader">
         Welcome back, please enter your details
       </p>
-      <form action="">
+      <form action={action}>
         <Input
+          formState={formState}
           htmlFor="email"
           label="email"
           type="email"
           placeholder="enter your email"
         />
         <Input
+          formState={formState}
           htmlFor="password"
           label="password"
           type="password"

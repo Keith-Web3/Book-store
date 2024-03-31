@@ -83,4 +83,52 @@ export async function signup(_formStatus: any, formData: FormData) {
   redirect('/')
 }
 
-export async function getUser(userId: string) {}
+export async function login(_formStatus: any, formData: FormData) {
+  const schema = z.object({
+    email: z.string({
+      required_error: 'Email is required',
+      invalid_type_error: 'Invalid Email',
+    }),
+    password: z
+      .string({
+        required_error: 'Please provide a password',
+      })
+      .min(8, 'Password must be 8 characters or more'),
+  })
+
+  const validatedFields = schema.safeParse({
+    email: formData.get('email'),
+    password: formData.get('password'),
+  })
+
+  if (!validatedFields.success) {
+    const { message, path } = JSON.parse(validatedFields.error.message)[0] as {
+      message: string
+      path: string
+    }
+    return { message, path }
+  }
+
+  try {
+    const response = await fetch(`${process.env.SERVER_URL}/v1/auth/login`, {
+      method: 'POST',
+      body: JSON.stringify(validatedFields.data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    if (!response.ok) {
+      const data = await response.json()
+      return { message: data.message, path: null }
+    }
+    const data = await response.json()
+
+    cookies().set(process.env.JWT_NAME!, data.token, {
+      expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
+    })
+  } catch (err) {
+    return { message: err, path: null }
+  }
+
+  redirect('/')
+}

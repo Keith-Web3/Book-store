@@ -12,14 +12,10 @@ import '@/sass/pages/signup.scss'
 interface SignupProps {}
 
 const Signup = function ({}: SignupProps) {
-  const [formState, action] = useFormState<{ message: string; path: string }>(
-    //@ts-ignore
-    signup,
-    {
-      message: '',
-      path: '',
-    }
-  )
+  const [formState, action] = useFormState(signup, {
+    message: '',
+    path: '',
+  })
   if (formState.message && !formState.path) {
     toast.error(formState.message)
   }
