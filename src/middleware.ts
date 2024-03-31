@@ -15,3 +15,7 @@ export async function middleware(request: NextRequest) {
 
   return NextResponse.redirect(new URL('/signup', request.url))
 }
+
+export const config = {
+  matcher: ['/((?!_next|api/auth).*)(.+)'],
+}
