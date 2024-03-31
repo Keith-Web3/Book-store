@@ -16,8 +16,6 @@ export async function getBooks(page?: number, limit?: number) {
   )
   const cards = await cardsRes.json()
 
-  console.log(cards)
-
   return cards.data
 }
 
@@ -76,11 +74,10 @@ export async function signup(_formStatus: any, formData: FormData) {
     cookies().set(process.env.JWT_NAME!, data.token, {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
     })
+    redirect('/')
   } catch (err) {
     return { message: err, path: '' }
   }
-
-  redirect('/')
 }
 
 export async function login(_formStatus: any, formData: FormData) {
@@ -123,12 +120,13 @@ export async function login(_formStatus: any, formData: FormData) {
     }
     const data = await response.json()
 
+    console.log(data)
+
     cookies().set(process.env.JWT_NAME!, data.token, {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
     })
+    redirect('/')
   } catch (err) {
     return { message: err, path: '' }
   }
-
-  redirect('/')
 }

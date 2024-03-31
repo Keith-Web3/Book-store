@@ -17,7 +17,7 @@ const Button = function ({
   return (
     <button className="auth-btn" disabled={pending} {...props}>
       {children}
-      {pending && <Loader radii={25} ringWidth={3} ringColor="#2a2abd" />}
+      {pending && <Loader radii={25} ringWidth={3} ringColor="#613db7" />}
     </button>
   )
 }
