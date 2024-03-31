@@ -3,7 +3,9 @@
 .loader {
   aspect-ratio: 1 / 1;
   background-color: transparent;
-  animation: rotate 200ms linear infinite;
+  animation: rotate 500ms linear infinite;
+  border-right-color: transparent !important;
+  border-radius: 50%;
 
   @keyframes rotate {
     100% {

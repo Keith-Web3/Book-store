@@ -16,7 +16,7 @@ const Signup = function ({}: SignupProps) {
     message: '',
     path: '',
   })
-  if (formState.message && !formState.path) {
+  if (formState.message && formState.path === '') {
     toast.error(formState.message)
   }
 

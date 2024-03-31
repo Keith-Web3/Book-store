@@ -7,7 +7,7 @@ interface InputProps {
   htmlFor: string
   label: string
   formState: {
-    path: string | null
+    path: string
     message: string
   }
 }
@@ -21,7 +21,7 @@ const Input = function ({
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   return (
     <label
-      className={`input ${formState?.path?.[0] === htmlFor ? 'invalid' : ''}`}
+      className={`input ${formState?.path[0] === htmlFor ? 'invalid' : ''}`}
       htmlFor={htmlFor}
     >
       {label}

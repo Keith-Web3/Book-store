@@ -7,11 +7,15 @@ import Button from '../Button'
 import { login } from '@/actions/server'
 
 import '@/sass/pages/login.scss'
+import toast from 'react-hot-toast'
 
 interface LoginProps {}
 
 const Login = function ({}: LoginProps) {
   const [formState, action] = useFormState(login, { message: '', path: '' })
+  if (formState.message && formState.path === '') {
+    toast.error(formState.message)
+  }
   return (
     <div className="login">
       <p className="login__header">Welcome back</p>

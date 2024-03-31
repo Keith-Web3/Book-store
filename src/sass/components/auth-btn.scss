@@ -11,6 +11,10 @@
   color: white;
   cursor: pointer;
   transition: 200ms linear background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacer;
 
   &:hover {
     background-color: mix($purple-100, black, 85%);

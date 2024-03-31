@@ -69,7 +69,7 @@ export async function signup(_formStatus: any, formData: FormData) {
     })
     if (!response.ok) {
       const data = await response.json()
-      return { message: data.message, path: null }
+      return { message: data.message, path: '' }
     }
     const data = await response.json()
 
@@ -77,7 +77,7 @@ export async function signup(_formStatus: any, formData: FormData) {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
     })
   } catch (err) {
-    return { message: err, path: null }
+    return { message: err, path: '' }
   }
 
   redirect('/')
@@ -119,7 +119,7 @@ export async function login(_formStatus: any, formData: FormData) {
     })
     if (!response.ok) {
       const data = await response.json()
-      return { message: data.message, path: null }
+      return { message: data.message, path: '' }
     }
     const data = await response.json()
 
@@ -127,7 +127,7 @@ export async function login(_formStatus: any, formData: FormData) {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
     })
   } catch (err) {
-    return { message: err, path: null }
+    return { message: err, path: '' }
   }
 
   redirect('/')

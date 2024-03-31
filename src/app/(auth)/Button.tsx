@@ -3,7 +3,7 @@ import { ComponentPropsWithRef, ReactNode } from 'react'
 import { useFormStatus } from 'react-dom'
 
 import '@/sass/components/auth-btn.scss'
-import toast from 'react-hot-toast'
+import Loader from '@/components/Loader'
 
 interface ButtonProps {
   children: ReactNode
@@ -17,6 +17,7 @@ const Button = function ({
   return (
     <button className="auth-btn" disabled={pending} {...props}>
       {children}
+      {pending && <Loader radii={25} ringWidth={3} ringColor="#2a2abd" />}
     </button>
   )
 }
