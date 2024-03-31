@@ -1,11 +1,12 @@
+'use client'
 import Link from 'next/link'
+import { useFormState } from 'react-dom'
 
 import Input from '@/components/Input'
 import Button from '../Button'
-import { login, signup } from '@/actions/server'
+import { login } from '@/actions/server'
 
 import '@/sass/pages/login.scss'
-import { useFormState } from 'react-dom'
 
 interface LoginProps {}
 
