@@ -10,7 +10,6 @@ interface NavLayoutProps {
 
 const NavLayout = async function ({ children }: NavLayoutProps) {
   const user = await getMe()
-  console.log(user)
   return (
     <div className="nav-layout">
       <ClientLayout>
