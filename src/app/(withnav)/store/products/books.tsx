@@ -1,6 +1,4 @@
 'use client'
-import { getBooks } from '@/actions/server'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,29 +11,24 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ReactNode, useState } from 'react'
 interface BooksProps {
   limit: number
+  totalPages: number
+  totalBooks: number
   children: ReactNode
 }
 
-const Books = function ({ limit, children }: BooksProps) {
+const Books = function ({
+  limit,
+  totalPages,
+  totalBooks,
+  children,
+}: BooksProps) {
   const [layout, setLayout] = useState('grid')
   const [filter, setFilter] = useState<'all' | 'published' | 'draft'>('all')
 
-  const queryClient = useQueryClient()
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const { replace } = useRouter()
   const currentPage = Number(searchParams.get('page')) || 1
-
-  const { data } = useQuery({
-    queryKey: ['books', `${currentPage}`],
-    queryFn: () => {
-      queryClient.prefetchQuery({
-        queryKey: ['books', `${currentPage + 1}`],
-        queryFn: () => getBooks(currentPage + 1, 10),
-      })
-      return getBooks(currentPage, 10)
-    },
-  })
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams)
@@ -101,14 +94,12 @@ const Books = function ({ limit, children }: BooksProps) {
         />
         <p>
           {limit * (currentPage - 1) + 1} -{' '}
-          {limit * currentPage > data?.totalBooks
-            ? data?.totalBooks
-            : limit * currentPage}
+          {limit * currentPage > totalBooks ? totalBooks : limit * currentPage}
         </p>
         <ChevronRight
-          aria-disabled={currentPage === data?.totalPages}
+          aria-disabled={currentPage === totalPages}
           onClick={() => {
-            if (currentPage === data?.totalPages) return
+            if (currentPage === totalPages) return
             createPageURL(currentPage + 1)
           }}
         />
