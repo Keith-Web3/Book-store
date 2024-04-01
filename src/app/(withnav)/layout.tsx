@@ -1,18 +1,21 @@
-import Header from '@/components/Header'
-import NavBar from '@/components/NavBar'
 import { ReactNode } from 'react'
+
 import '@/sass/layouts/navLayout.scss'
+import ClientLayout from './ClientLayout'
+import { getMe } from '@/actions/server'
 
 interface NavLayoutProps {
   children: ReactNode
 }
 
-const NavLayout = function ({ children }: NavLayoutProps) {
+const NavLayout = async function ({ children }: NavLayoutProps) {
+  const user = await getMe()
+  console.log(user)
   return (
     <div className="nav-layout">
-      <Header />
-      <main>{children}</main>
-      <NavBar />
+      <ClientLayout>
+        <main>{children}</main>
+      </ClientLayout>
     </div>
   )
 }

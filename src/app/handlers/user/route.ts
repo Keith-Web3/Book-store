@@ -12,5 +12,7 @@ export async function GET(req: NextRequest, res: Response) {
   )
   const user = await response.json()
 
+  console.log(user)
+
   return Response.json({ user })
 }

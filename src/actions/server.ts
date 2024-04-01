@@ -130,3 +130,20 @@ export async function login(_formStatus: any, formData: FormData) {
     return { message: err, path: '' }
   }
 }
+
+export async function getMe() {
+  const token = cookies().get(process.env.JWT_NAME!)?.value
+  const response = await fetch(
+    `${process.env.SERVER_URL}/v1/users/current-user`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+  const user = await response.json()
+
+  console.log(user)
+
+  return user
+}

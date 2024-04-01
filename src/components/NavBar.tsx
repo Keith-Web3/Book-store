@@ -6,19 +6,36 @@ import {
   MailIcon,
   SettingsIcon,
   StoreIcon,
+  XIcon,
 } from 'lucide-react'
 import '../sass/components/navbar.scss'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { Dispatch, SetStateAction } from 'react'
+import { motion } from 'framer-motion'
 
-interface NavBarProps {}
+interface NavBarProps {
+  isNavOpen: boolean
+  setIsNavOpen: Dispatch<SetStateAction<boolean>>
+}
 
-const NavBar = function ({}: NavBarProps) {
+const NavBar = function ({ isNavOpen, setIsNavOpen }: NavBarProps) {
   const pathname = usePathname()
   const paths = pathname.split('/').slice(1)
 
+  const variants = {
+    visible: { opacity: 1, width: '100%' },
+    hidden: { opacity: 0, width: '0' },
+  }
+
   return (
-    <nav className="navbar">
+    <motion.nav
+      layout
+      variants={variants}
+      initial={isNavOpen ? 'hidden' : 'visible'}
+      animate={isNavOpen ? 'visible' : 'hidden'}
+      className="navbar"
+    >
       <div className="navbar__icon-container">
         <ul className="navbar__icons">
           <li>
@@ -70,7 +87,13 @@ const NavBar = function ({}: NavBarProps) {
       </div>
       <div className="navbar__links-container">
         <ul className="navbar__links">
-          <li className="nav-header">store</li>
+          <li className="nav-header">
+            store{' '}
+            <XIcon
+              className="navbar__close-btn"
+              onClick={() => setIsNavOpen(false)}
+            />
+          </li>
           <li>
             <Link className="nav-item" href="./products">
               products
@@ -98,7 +121,7 @@ const NavBar = function ({}: NavBarProps) {
           </li>
         </ul>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 
