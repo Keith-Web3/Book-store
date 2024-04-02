@@ -6,13 +6,7 @@ import { cookies } from 'next/headers'
 
 export async function getBooks(page?: number, limit?: number) {
   const cardsRes = await fetch(
-    `${process.env.SERVER_URL}/v1/books?page=${page}&limit=${limit}`,
-    {
-      cache: 'no-store',
-      headers: {
-        Authorization: `Bearer ${cookies().get(process.env.JWT_NAME!)?.value}`,
-      },
-    }
+    `${process.env.SERVER_URL}/v1/books?page=${page}&limit=${limit}`
   )
   const cards = await cardsRes.json()
 
@@ -143,7 +137,11 @@ export async function getMe() {
   )
   const user = await response.json()
 
-  console.log(user)
-
   return user
+}
+
+export async function getBook(id: string) {
+  const response = await fetch(
+    `${process.env.SERVER_URL}/v1/users/current-user`
+  )
 }
