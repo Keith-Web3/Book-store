@@ -1,8 +1,9 @@
 import '@/sass/pages/homepage.scss'
-import Books from './books'
+import Books from '../books'
 import { getBooks } from '@/actions/server'
 import { Card } from '@/app/types'
 import BookCard from '@/components/Card'
+import Link from 'next/link'
 
 export default async function Home({
   searchParams,
@@ -24,6 +25,7 @@ export default async function Home({
           <BookCard key={card.id} {...card} />
         ))}
       </Books>
+      <Link href="/books/66098341e665769022ad1e50">Click me</Link>
     </div>
   )
 }

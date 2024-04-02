@@ -3,6 +3,8 @@
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import { cookies } from 'next/headers'
+import { Card } from '@/app/types'
+import { useQuery } from '@tanstack/react-query'
 
 export async function getBooks(page?: number, limit?: number) {
   const cardsRes = await fetch(
@@ -141,7 +143,8 @@ export async function getMe() {
 }
 
 export async function getBook(id: string) {
-  const response = await fetch(
-    `${process.env.SERVER_URL}/v1/users/current-user`
-  )
+  const response = await fetch(`${process.env.SERVER_URL}/v1/books/${id}`)
+  const data = await response.json()
+
+  return data.data?.book
 }

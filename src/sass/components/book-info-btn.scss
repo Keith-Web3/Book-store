@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.book-info__btn {
+  border: 2px solid $dark-100;
+  outline: none;
+  background-color: transparent;
+  padding: 0.75em 1.2em;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: 500;
+  border-radius: 3px;
+}

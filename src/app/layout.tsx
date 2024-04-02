@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
 import '@/sass/index.scss'
+import Providers from './Providers'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -42,7 +43,7 @@ export default function RootLayout({
             },
           }}
         />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
