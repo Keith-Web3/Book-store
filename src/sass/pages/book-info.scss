@@ -45,6 +45,24 @@
       text-transform: capitalize;
       margin-bottom: $spacer * 0.5;
     }
+    .reviews {
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+      font-size: 1.125rem;
+      font-weight: 500;
+      gap: $spacer * 0.5;
+      margin-bottom: $spacer;
+
+      p:first-child {
+        color: $purple-100;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
   &__about {
     grid-area: info;

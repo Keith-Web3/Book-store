@@ -3,12 +3,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
+import { ReactNode } from 'react'
 
 import { formatDate } from '@/utils/format'
 import '@/sass/pages/book-info.scss'
 import { getBook } from '@/actions/server'
 import Button from './Button'
-import { ReactNode } from 'react'
+import { StarIcon } from 'lucide-react'
 
 interface BookInfoProps {
   children?: ReactNode
@@ -20,6 +21,18 @@ const BookInfo = function ({ children }: BookInfoProps) {
     queryKey: ['book', params.id],
     queryFn: () => getBook(params.id),
   })
+
+  const stars = Array(5)
+    .fill(null)
+    .map((_el, idx) => {
+      const id = `${idx}` + bookInfo._id
+
+      if (idx < Math.round(bookInfo.ratingsAverage)) {
+        return <StarIcon fill="#613db7" color="#613db7" key={id} />
+      }
+      return <StarIcon key={id} />
+    })
+
   return (
     <div className="book-info">
       {children}
@@ -36,6 +49,11 @@ const BookInfo = function ({ children }: BookInfoProps) {
           <p>{bookInfo.status}</p>
         </header>
         <div className="book-info__description">
+          <div className="reviews">
+            <p>{bookInfo.ratingsAverage?.toFixed(1)}</p>
+            <div>{stars}</div>
+            <p>({bookInfo.ratingsQuantity}) Review</p>
+          </div>
           <h2>description</h2>
           <p>{bookInfo.description}</p>
         </div>
