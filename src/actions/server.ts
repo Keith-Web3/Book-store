@@ -108,6 +108,7 @@ export async function login(_formStatus: any, formData: FormData) {
       headers: {
         'Content-Type': 'application/json',
       },
+      cache: 'no-cache',
     })
     const data = await response.json()
     if (!response.ok) {
