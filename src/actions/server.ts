@@ -61,11 +61,10 @@ export async function signup(_formStatus: any, formData: FormData) {
         'Content-Type': 'application/json',
       },
     })
+    const data = await response.json()
     if (!response.ok) {
-      const data = await response.json()
       return { message: data.message, path: '' }
     }
-    const data = await response.json()
 
     cookies().set(process.env.JWT_NAME!, data.token, {
       expires: Date.now() + +process.env.JWT_EXPIRES_IN! * 24 * 60 * 60 * 1000,
@@ -110,12 +109,10 @@ export async function login(_formStatus: any, formData: FormData) {
         'Content-Type': 'application/json',
       },
     })
+    const data = await response.json()
     if (!response.ok) {
-      const data = await response.json()
       return { message: data.message, path: '' }
     }
-    const data = await response.json()
-
     console.log(data)
 
     cookies().set(process.env.JWT_NAME!, data.token, {
