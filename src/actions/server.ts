@@ -139,7 +139,9 @@ export async function getMe() {
 }
 
 export async function getBook(id: string) {
-  const response = await fetch(`${process.env.SERVER_URL}/v1/books/${id}`)
+  const response = await fetch(`${process.env.SERVER_URL}/v1/books/${id}`, {
+    cache: 'no-cache',
+  })
   const data = await response.json()
 
   return data.data?.book
