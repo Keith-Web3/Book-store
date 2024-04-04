@@ -9,7 +9,7 @@ import { formatDate } from '@/utils/format'
 import '@/sass/pages/book-info.scss'
 import { getBook } from '@/actions/server'
 import Button from './Button'
-import { StarIcon, UserCircle } from 'lucide-react'
+import { Facebook, Instagram, StarIcon, UserCircle } from 'lucide-react'
 import Link from 'next/link'
 
 interface BookInfoProps {}
@@ -124,6 +124,28 @@ const BookInfo = function ({}: BookInfoProps) {
         </div>
         <a href={`mailto:${bookInfo.author.email}`}>start chat</a>
       </section>
+      <footer>
+        <div>
+          <Image
+            src="/bookstore-logo.jpg"
+            alt="bookstore logo"
+            width={2686}
+            height={1308}
+          />
+          <p>© All copyrights reserved, bookstore 2024</p>
+        </div>
+        <div>
+          <p>contact us</p>
+          <p>about us</p>
+          <p>FAQ</p>
+          <p>terms and conditions</p>
+          <p>privacy policy</p>
+        </div>
+        <div>
+          <Facebook />
+          <Instagram />
+        </div>
+      </footer>
     </div>
   )
 }
