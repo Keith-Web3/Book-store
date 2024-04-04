@@ -28,10 +28,13 @@
     text-transform: capitalize;
     padding-bottom: $spacer;
     border-bottom: 1px solid $gray-50;
+    font-weight: 500;
 
     h1 {
-      font-weight: 500;
       font-size: 1.5rem;
+    }
+    p {
+      color: $purple-100;
     }
   }
   &__description {
@@ -86,5 +89,50 @@
     display: flex;
     align-items: center;
     gap: $spacer;
+  }
+  &__author {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacer * 5;
+    border-top: 1px solid $gray-50;
+    margin-top: $spacer * 3;
+    padding-top: $spacer * 2;
+    text-transform: capitalize;
+
+    .author-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    div:first-child {
+      display: flex;
+      align-items: center;
+      gap: $spacer * 0.5;
+
+      p {
+        font-weight: 500;
+      }
+    }
+    div:not(:first-child) {
+      p:first-child {
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin-bottom: $spacer * 0.5;
+      }
+      .email {
+        text-transform: lowercase;
+      }
+    }
+    a {
+      text-decoration: none;
+      display: block;
+      margin-left: auto;
+      cursor: pointer;
+      color: $dark-200;
+      border: 1px solid $gray-200;
+      padding: 0.75em 1.1em;
+      border-radius: 3px;
+      font-weight: 500;
+    }
   }
 }

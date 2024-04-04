@@ -9,13 +9,11 @@ import { formatDate } from '@/utils/format'
 import '@/sass/pages/book-info.scss'
 import { getBook } from '@/actions/server'
 import Button from './Button'
-import { StarIcon } from 'lucide-react'
+import { StarIcon, UserCircle } from 'lucide-react'
 
-interface BookInfoProps {
-  children?: ReactNode
-}
+interface BookInfoProps {}
 
-const BookInfo = function ({ children }: BookInfoProps) {
+const BookInfo = function ({}: BookInfoProps) {
   const params = useParams<{ id: string }>()
   const { data: bookInfo } = useQuery({
     queryKey: ['book', params.id],
@@ -35,7 +33,6 @@ const BookInfo = function ({ children }: BookInfoProps) {
 
   return (
     <div className="book-info">
-      {children}
       <section className="book-info__main">
         <Image
           className="book-info__img"
@@ -83,6 +80,31 @@ const BookInfo = function ({ children }: BookInfoProps) {
           <Button>view all reviews</Button>
           <Button>rate book</Button>
         </div>
+      </section>
+      <section className="book-info__author">
+        <div>
+          {bookInfo.author.photo ? (
+            <Image
+              className="author-image"
+              src={bookInfo.author.photo}
+              alt={bookInfo.author.name}
+              width={30}
+              height={30}
+            />
+          ) : (
+            <UserCircle strokeWidth={1} className="author-image" />
+          )}
+          <p>{bookInfo.author.name}</p>
+        </div>
+        <div>
+          <p>profession</p>
+          <p>author</p>
+        </div>
+        <div>
+          <p>email address</p>
+          <p className="email">{bookInfo.author.email}</p>
+        </div>
+        <a href={`mailto:${bookInfo.author.email}`}>start chat</a>
       </section>
     </div>
   )
