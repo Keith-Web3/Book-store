@@ -10,6 +10,7 @@ import '@/sass/pages/book-info.scss'
 import { getBook } from '@/actions/server'
 import Button from './Button'
 import { StarIcon, UserCircle } from 'lucide-react'
+import Link from 'next/link'
 
 interface BookInfoProps {}
 
@@ -33,6 +34,23 @@ const BookInfo = function ({}: BookInfoProps) {
 
   return (
     <div className="book-info">
+      <header className="book-info__header">
+        <Image
+          src="/bookstore-logo.jpg"
+          alt="bookstore logo"
+          width={2686}
+          height={1308}
+        />
+        <div>
+          <Link href="/">home</Link>
+          <Link href="/store/products">books</Link>
+          <Link href="/">about us</Link>
+        </div>
+        <div>
+          <Link href="/">cart</Link>
+          <Link href="/new-book">post book +</Link>
+        </div>
+      </header>
       <section className="book-info__main">
         <Image
           className="book-info__img"
@@ -41,7 +59,7 @@ const BookInfo = function ({}: BookInfoProps) {
           height={375}
           alt={bookInfo.title}
         />
-        <header className="book-info__header">
+        <header className="book-info__main-header">
           <h1>{bookInfo.title}</h1>
           <p>{bookInfo.status}</p>
         </header>

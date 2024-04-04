@@ -15,6 +15,7 @@
         grid-template-areas: 'status status' 'img title' 'img footer';
         gap: $spacer;
         width: 100%;
+        background-image: unset;
 
         &__image {
           max-width: 100%;
